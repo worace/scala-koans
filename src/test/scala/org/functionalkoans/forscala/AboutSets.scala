@@ -126,7 +126,5 @@ class AboutSets extends KoanSuite with ShouldMatchers {
 
     mySet1.equals(mySet2) should be(true)
   }
-  
-
 
 }

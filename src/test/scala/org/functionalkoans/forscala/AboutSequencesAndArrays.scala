@@ -12,6 +12,11 @@ class AboutSequencesAndArrays extends KoanSuite with ShouldMatchers {
     a should equal(Array(1, 2, 3))
   }
 
+  koan("Array can be converted to list") {
+    val a = Array(1, 2, 3)
+    val l = a.toList
+    l should equal(List(1, 2, 3))
+  }
   koan("Any sequence can be converted to a list") {
     val a = Array(1, 2, 3)
     val s = a.toSeq
@@ -26,6 +31,7 @@ class AboutSequencesAndArrays extends KoanSuite with ShouldMatchers {
 
   koan("You can create a sequence from a for comprehension with a condition") {
     val s = for (v <- 1 to 10 if v % 3 == 0) yield v
+    s should be(Seq(3,6,9))
     s.toList should be(List(3, 6, 9))
   }
 
@@ -47,6 +53,9 @@ class AboutSequencesAndArrays extends KoanSuite with ShouldMatchers {
       _.reverse
     }
 
+    val t = s map(_.reverse) //woo parens syntax
+
+    t should be(Seq("olleh", "dlrow"))
     r should be(Seq("olleh", "dlrow"))
   }
 

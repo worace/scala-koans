@@ -15,6 +15,12 @@ class AboutMutableMaps extends KoanSuite with ShouldMatchers {
     myMap contains "OR" should be(true)
   }
 
+  koan("Mutable and immutable maps are equivalent") {
+    val myMap = mutable.Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
+    val iMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
+    myMap should equal(iMap)
+  }
+
   koan("Mutable maps can have elements removed") {
     val myMap = mutable.Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     myMap -= "OH"
@@ -37,6 +43,7 @@ class AboutMutableMaps extends KoanSuite with ShouldMatchers {
 
   koan("Mutable maps can have Lists of elements added") {
     val myMap = mutable.Map("MI" -> "Michigan", "WI" -> "Wisconsin")
+    //TODO: Question -- why is ++= needed for List but only += for Tuple
     myMap ++= List("IA" -> "Iowa", "OH" -> "Ohio")
     myMap contains "OH" should be(true)
     myMap.size should be(4)
