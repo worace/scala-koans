@@ -11,3 +11,5 @@ all credit to the original author
 `~test-quick org.functionalkoans.forscala.AboutMutableMaps`
 
 Please see http://bitbucket.org/dickwall/scala-koans/wiki/Home for more details on scala-koans
+
+## seek enlightenment; follow: src/test/scala/org/functionalkoans/forscala/PathToEnlightenment.scala
