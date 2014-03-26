@@ -56,4 +56,19 @@ class AboutMutableSets extends KoanSuite with ShouldMatchers {
     mySet.size should be(0)
   }
 
+  koan("Mutable sets of mixed type can have other type added") {
+    val mySet = mutable.Set("Michigan", 1, "Wisconsin")
+    mySet += List(1,2,3)
+    assert(mySet.contains(List(1,2,3)))
+    //wont compile:
+    //mySet += (1,2)
+  }
+
+  koan("Mutable sets of single type cant have other type added") {
+    val mySet = mutable.Set("Michigan", "Ohio", "Wisconsin", "Iowa")
+    //assert(mySet.isInstanceOf[mutable.Set[String]] == true)
+    //wont compile:
+    //mySet += (1,2)
+  }
+
 }
