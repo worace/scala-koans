@@ -1,3 +1,7 @@
+## github clone of original repo from bitbucket: https://bitbucket.org/dickwall/scala-koans
+
+all credit to the original author
+
 ## to build:
 
 `sbt`
