@@ -15,13 +15,14 @@ class AboutOptions extends KoanSuite with ShouldMatchers {
   }
 
   koan("Represent null with None because null is a bad idea") {
-    val value1 = maybeItWillReturnSomething(true)
-    val value2 = maybeItWillReturnSomething(false)
+    val value1: Option[String] = Some("Found value")
+    val value2: Option[String] = None
 
     value1.get should be("Found value")
     intercept[java.util.NoSuchElementException] {
       value2.get
     }
+    value2 getOrElse "pizza" should be("pizza")
   }
 
   koan("Provide a default value for None") {
@@ -30,10 +31,11 @@ class AboutOptions extends KoanSuite with ShouldMatchers {
 
     value1 getOrElse "No value" should be("Found value")
     value2 getOrElse "No value" should be("No value")
+    var mutableVar = 1
     value2 getOrElse {
-      "default function"
-    } should be("default function")
-
+      mutableVar = 2
+    }
+    mutableVar should be(2)
   }
 
   koan("checking whether option has value") {
@@ -57,7 +59,6 @@ class AboutOptions extends KoanSuite with ShouldMatchers {
       case None => 0.0
     }
     value1 should be(0.0)
-
   }
 
   koan("Option is more than just a replacement of null, its also a collection") {
